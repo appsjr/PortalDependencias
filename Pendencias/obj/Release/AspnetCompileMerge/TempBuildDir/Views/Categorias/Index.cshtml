@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Pendencias.Models.DTOCategoria>
+
+<br>
+<p>
+    <button class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Create", "Categorias" )';return false;">Nova Categoria</button>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Descricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Codigo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Descricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Codigo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Codigo }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.Codigo })
+        </td>
+    </tr>
+}
+
+</table>

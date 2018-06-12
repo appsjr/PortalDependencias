@@ -1,0 +1,49 @@
+﻿@using Pendencias.Models
+
+@{
+    ViewBag.Title = "Home - Pendências eSocial";
+}
+
+@model DTOPendencia
+
+<div class="row">
+    <h3>Deseja excluir essa pendência?</h3>
+    <div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Titulo)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Responsavel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Responsavel)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-danger" />
+            <button class="btn btn-default" type="submit" onclick="location.href='@Url.Action("Index", "Pendencias")';return false;">Cancelar</button>
+        </div>
+        }
+    </div>
+</div>

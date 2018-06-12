@@ -1,0 +1,98 @@
+﻿@using Pendencias.Models
+@model LoginViewModel
+
+@{
+    Layout = "";
+}
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE10" />
+    <link href="./Content/autenticacao.min.css" rel="stylesheet" type="text/css" />
+    <title>
+        Login - Portal de Pendências eSocial
+    </title>
+</head>
+<body>
+    @using (Html.BeginForm("NovoLogin", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div id="container">
+            @*<div id="backgroundDoCliente" class="centro" style="background-image: url(../Imagens/background.jpg);">*@
+            <div id="backgroundDoCliente" class="centro" style="background-image: url(./Imagens/esocial.jpg);">
+            </div>
+            <div id="principal">
+                <div id="pnlPrincipal">
+                    <div class="divDados">
+                        <div id="cabecalho">
+                            @*<div id="logotipo" style="background-image: url(&quot;./Imagens/logo.png&quot;);">
+                                </div>*@
+                        </div>
+
+                        <div id="conteudo" style="top:200px;">
+                            <div id="ContentPlaceHolder_mensagens"></div>
+                            <div id="ContentPlaceHolder_pnlDados">
+                                <div id="ContentPlaceHolder_PanelDialogo">
+                                </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div id="ContentPlaceHolder_cartaoLogin" class="cartao">
+                                    <div class="sessao">
+                                        @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
+                                        @Html.TextBoxFor(m => m.Username, new { @class = "form-control" })
+                                    </div>
+
+                                    <div class="sessao">
+                                        <div class="hideShowPassword-wrapper" style="position: relative; display: inline-block; vertical-align: baseline; margin: 0px;">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                            <button type="button" role="button" aria-label="Show Password" title="Show Password" tabindex="0" class="hideShowPassword-toggle hideShowPassword-toggle-show" aria-pressed="false" style="position: absolute; right: 0px; top: 50%; margin-top: -18px;">
+                                                Show
+                                            </button>
+                                        </div>
+                                        <span class="highlight"></span>
+                                        <span class="bar"></span>
+                                    </div>
+
+                                    <div id="ContentPlaceHolder_divBotoes" class="sessao">
+                                        <div class="divBotao">
+                                            <input type="submit" value="Entrar" class="botaoSimples botaoConfirmar esquerda" />
+                                        </div>
+
+                                        @*<div id="ContentPlaceHolder_pnlEsqueceuSenha">
+                                                <a id="ContentPlaceHolder_bntEsqueceuASenha" class="esqueci" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder$bntEsqueceuASenha", "", true, "", "", false, true))'>Esqueceu sua senha?</a>
+                                            </div>*@
+
+                                        <div id="ContentPlaceHolder_pnlPrimeiroAcesso">
+                                            @*<a id="ContentPlaceHolder_btnNuncaAcessou" class="esqueci" href='javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions("ctl00$ContentPlaceHolder$btnNuncaAcessou", "", true, "", "", false, true))'>Primeiro Acesso?</a>*@
+                                            <div class="esqueci">
+                                                <a>@Html.ActionLink("Registre-se", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="rodape">
+                            <div id="informacoesLG">
+                                <p id="descricaoLG">LG lugar de gente 2018</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    }
+</body>
+</html>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

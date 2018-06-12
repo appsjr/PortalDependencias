@@ -1,0 +1,40 @@
+﻿@using Pendencias.Models
+
+@{
+    Layout = "";
+}
+
+    @model List<DTOPendencia>
+
+@foreach (var item in Model)
+{
+    <div class="card" style="border:1px solid lightgray; padding:20px; margin-top:5px;">
+        <div class="card-header" style="background-color:@(item.Status == StatusDaPendencia.FINALIZADO ? "#99ff99" : "#ff9999")">
+            <h3>
+                @Html.DisplayFor(modelItem => item.Titulo)
+            </h3>
+        </div>
+        <div class="card-body">
+
+            <p class="card-text">
+                @Html.LabelFor(modelItem => item.Data):
+                @Html.DisplayFor(modelItem => item.Data)
+            </p>
+            <p class="card-text">
+                @Html.LabelFor(modelItem => item.Responsavel):
+                @Html.DisplayFor(modelItem => item.Responsavel)
+            </p>
+            <p class="card-text">
+                @Html.LabelFor(modelItem => item.Descricao):
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </p>
+            <p class="card-text">
+                @Html.LabelFor(modelItem => item.Obs):
+                @Html.DisplayFor(modelItem => item.Obs)
+            </p>
+
+            <button class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Edit", "Pendencias", new { id = item.ID })';return false;">Editar</button>
+            <button class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Delete", "Pendencias", new { id = item.ID })';return false;">Excluir</button>
+        </div>
+    </div>
+}

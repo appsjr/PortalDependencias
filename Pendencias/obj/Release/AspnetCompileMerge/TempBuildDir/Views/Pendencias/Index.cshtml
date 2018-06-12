@@ -1,0 +1,35 @@
+﻿@using Pendencias.Models
+
+@{
+    ViewBag.Title = "Home - Pendências eSocial";
+}
+
+@model List<DTOPendencia>
+
+<div class="jumbotron">
+    <h2>Pendências eSocial</h2>
+    <p class="lead">Portal de gerenciamento de pendências do Projeto eSocial.</p>
+</div>
+
+<div>
+    <button class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Create", "Pendencias" )';return false;">Nova Pendência</button>
+    <button class="btn btn-primary" id="btnAtualizar">Atualizar</button>
+</div>
+
+<div class="row" id="listaDePendencias">
+    @Html.Partial("_ListaDePendencias", Model)
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnAtualizar").on('click', () => {
+            $.ajax({
+                type        : "GET",
+                url         : "AtualizaListaDePendencias",
+                success     : function (data) {
+                    $("#listaDePendencias").html(data);
+                }
+            });
+        });
+    });
+</script>

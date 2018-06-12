@@ -1,0 +1,52 @@
+﻿@using Pendencias.Models
+
+@{
+    ViewBag.Title = "Home - Pendências eSocial";
+}
+
+@model List<LoginViewModel>
+
+<div class="jumbotron">
+    <h2>Pendências eSocial</h2>
+    <p class="lead">Portal de gerenciamento de pendências do Projeto eSocial.</p>
+</div>
+
+<div>
+    <button class="btn btn-primary" type="submit" onclick="location.href='@Url.Action("Create", "Pendencias")';return false;">Nova Pendência</button>
+</div>
+
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="card" style="border:1px solid lightgray; padding:20px; margin-top:5px;">
+            <div class="card-header" style="background-color:lavender; padding:5px">
+                Pendência
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Pendência 1</h5>
+                <p class="card-text">Essa é uma pendência do eSocial.</p>
+                <a href="#" class="btn btn-primary">Finalizar</a>
+            </div>
+        </div>
+    }
+        @*<div class="card" style="border:1px solid lightgray; padding:20px;;margin-top:5px">
+            <div class="card-header" style="background-color:lavender; padding:5px;">
+                Pendência
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Pendência 1</h5>
+                <p class="card-text">Essa é uma pendência do eSocial.</p>
+                <a href="#" class="btn btn-primary">Finalizar</a>
+            </div>
+        </div>
+        <div class="card " style="border:1px solid lightgray; padding:20px;margin-top:5px;">
+            <div class="card-header" style="background-color:lavender; padding:5px;">
+                Pendência
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Pendência 1</h5>
+                <p class="card-text">Essa é uma pendência do eSocial.</p>
+                <a href="#" class="btn btn-primary">Finalizar</a>
+            </div>
+        </div>*@
+    </div>
